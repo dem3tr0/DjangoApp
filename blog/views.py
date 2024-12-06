@@ -2,24 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('<h2>Главная</h2>')
+    header = 'Данные пользователя'  # обычная переменная
+    langs = ['Python', 'C++']  # список
+    user = {'name': 'Dima', 'age': 16}  # словарь
+    address = ('Истомина', '22А', 91)  # кортеж
+
+    data = {'header': header, 'langs': langs, 'user': user, 'address': address}
+    return render(request, 'blog/index.html', context=data)
 
 
-def about(request, name, age):
-    return HttpResponse(f'''
-        <h2>О пользователе</h2>
-        <p>Имя: {name}</p>
-        <p>Возраст: {age}</p>
-    ''')
-
-
-def contacts(request):
-    return HttpResponse('<h2>Контакты</h2>')
-
-
-def user(request, name='undefined', age=0):
-    return HttpResponse(f'''
-    <h2>Имя: {name}</h2>
-    <h2>Возраст: {age}</h2>
-''')
 
